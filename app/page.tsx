@@ -1,31 +1,42 @@
+import Link from "next/link";
 export default function Home() {
   return (
     <>
       <section className="mb-12">
         <div className="space-y-6">
           <p className="text-lg leading-relaxed text-foreground">
-            I'm a designer and developer passionate about creating thoughtful
-            digital experiences. My work sits at the intersection of design and
-            engineering, where I explore how technology can be both functional
-            and beautiful.
+            Hey, I'm Sriket(Shree-keht). Im 23 years old, and I'm building{" "}
+            <Link
+              href="https://try-cobalt.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              Cobalt
+            </Link>{" "}
+            to help you talk to your money.
           </p>
 
-          <p className="leading-relaxed text-muted-foreground">
-            With a background in both visual design and software development, I
-            bring a unique perspective to every project. I believe that the best
-            digital products are those that feel effortless to use while being
-            meticulously crafted under the hood.
+           <p className="leading-relaxed text-shadow-muted-foreground">
+            I like to code, watch movies, and play basketball.  
           </p>
 
-          <p className="leading-relaxed text-muted-foreground">
+          <p className="leading-relaxed text-shadow-muted-foreground">
+            Art is super important, and we all need to do our job in helping grow it. 
+          </p>
+
+
+
+
+          {/* <p className="leading-relaxed text-muted-foreground">
             Currently, I'm focused on building tools that help people work more
             creatively and efficiently. I'm particularly interested in design
             systems, developer experience, and the future of web technologies.
-          </p>
+          </p>  */}
         </div>
       </section>
 
-      <section className="mb-12">
+      {/* <section className="mb-12">
         <h2 className="mb-6 text-2xl font-semibold text-foreground">
           Experience
         </h2>
@@ -57,9 +68,9 @@ export default function Home() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <section>
+      {/* <section>
         <h2 className="mb-6 text-2xl font-semibold text-foreground">Skills</h2>
 
         <p className="leading-relaxed text-muted-foreground">
@@ -69,7 +80,7 @@ export default function Home() {
           <br />
           Tools: Git, VS Code, Linear, Notion
         </p>
-      </section>
+      </section> */}
     </>
   );
 }
