@@ -7,7 +7,7 @@ export function Header() {
         <Link href="/" className="text-4xl font-semibold text-foreground">
           Sriket Komali
         </Link>
-        <div className="flex gap-8 text-sm">
+        <div className="flex gap-8 font-semibold text-lg">
           <Link
             href="/blog"
             className="text-muted-foreground transition-colors hover:text-foreground"
