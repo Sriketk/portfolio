@@ -46,7 +46,7 @@ export default async function BlogPost({
           </h1>
         </header>
 
-        <div className="prose prose-lg max-w-none">
+        <div className="prose font-extrabold  prose-xl max-w-none">
           <MDXRemote
             source={post.content}
             components={components}

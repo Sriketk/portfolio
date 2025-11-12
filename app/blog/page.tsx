@@ -11,12 +11,10 @@ export default async function Blog() {
           <article key={post.slug}>
             <Link href={`/blog/${post.slug}`} className="group block">
               <time className="mb-2 block text-sm text-muted-foreground">{post.date}</time>
-              <h2 className="mb-3 text-2xl font-semibold text-foreground transition-colors group-hover:text-accent">
+              <h2 className="mb-3 text-xl font-semibold text-foreground transition-colors ">
                 {post.title}
               </h2>
-              {post.description && (
-                <p className="leading-relaxed text-muted-foreground">{post.description}</p>
-              )}
+             
             </Link>
           </article>
         ))}
