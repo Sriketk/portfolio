@@ -28,7 +28,7 @@ export default function Home() {
           </p>
 
           <p className="text-lg leading-relaxed text-foreground">
-            Do me a favor and support your local theater! This week I recommend{" "}
+            Do me a favor and support your local movie theater! This week I recommend{" "}
             <Link
               href="https://letterboxd.com/film/bugonia/"
               target="_blank"
