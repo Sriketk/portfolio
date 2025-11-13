@@ -16,12 +16,28 @@ export default function Home() {
               Cobalt
             </Link>{" "}
             to help you talk to your money. In my free time, I like to watch
-            movies and play basketball. I'm working on becoming a better writer. 
+            movies and play basketball. I'm working on becoming a better{" "}
+            <Link
+              href="/blog"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              writer
+            </Link>{" "}
+            and a{" "}
+            <Link
+              href="https://www.instagram.com/sriket_cooks/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              cook
+            </Link>
+            .
           </p>
 
           <p className="text-lg leading-relaxed text-foreground">
-            Do me a favor and support your local theater! This
-            week I recommend{" "}
+            Do me a favor and support your local theater! This week I recommend{" "}
             <Link
               href="https://letterboxd.com/film/bugonia/"
               target="_blank"
@@ -40,6 +56,19 @@ export default function Home() {
               Die My Love
             </Link>
             .
+          </p>
+
+          <p className="text-lg leading-relaxed text-foreground">
+            If you need help picking a movie, check{" "}
+            <Link
+              href="https://cinescape.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              this
+            </Link>{" "}
+            out
           </p>
 
           <p className="text-md leading-relaxed text-foreground">
