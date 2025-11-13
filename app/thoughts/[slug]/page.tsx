@@ -29,16 +29,11 @@ export default async function BlogPost({
 
   return (
     <>
-      <Link
-        href="/blog"
-        className="mb-8 inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
-      >
-        ← Back to blog
-      </Link>
+      
 
       <article>
         <header>
-          <time className="mb-4 block text-sm text-muted-foreground">
+          <time className="mb-4 block text-md text-muted-foreground">
             {post.metadata.date}
           </time>
           <h1 className="mb-4 font-serif text-4xl font-semibold leading-tight text-foreground md:text-5xl">
@@ -46,7 +41,7 @@ export default async function BlogPost({
           </h1>
         </header>
 
-        <div className="prose font-extrabold  prose-xl max-w-none">
+        <div className="max-w-none">
           <MDXRemote
             source={post.content}
             components={components}

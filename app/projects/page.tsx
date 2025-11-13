@@ -32,7 +32,7 @@ export default function Projects() {
                 <h2 className="text-2xl font-semibold text-foreground transition-colors group-hover:text-accent">
                   {project.title}
                 </h2>
-                <span className="text-sm text-muted-foreground">{project.year}</span>
+                <span className="text-lg text-muted-foreground">{project.year}</span>
               </div>
               <p className="leading-relaxed text-muted-foreground">{project.description}</p>
             </Link>

@@ -7,12 +7,12 @@ export function Header() {
         <Link href="/" className="text-4xl font-semibold text-foreground">
           Sriket Komali
         </Link>
-        <div className="flex gap-8 font-semibold text-lg">
+        <div className="flex gap-8 font-semibold text-md">
           <Link
-            href="/blog"
+            href="/thoughts"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            Blog
+            Thoughts
           </Link>
           <Link
             href="/food"

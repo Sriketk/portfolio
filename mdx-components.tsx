@@ -19,7 +19,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </h3>
     ),
     p: ({ children }) => (
-      <p className="mb-6 leading-relaxed text-muted-foreground">
+      <p className="mb-6 text-lg font-extrabold leading-relaxed text-muted-foreground">
         {children}
       </p>
     ),

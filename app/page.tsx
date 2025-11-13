@@ -5,8 +5,8 @@ export default function Home() {
       <section className="mb-12">
         <div className="space-y-6">
           <p className="text-lg leading-relaxed text-foreground">
-            Hey, I'm Sriket(Shree-keht). Im 23 years old. I went to University
-            of Maryland. Im a developer, and I'm building{" "}
+            Yo, I'm Sriket(Shree-keht). I'm 23 years old. I went to University
+            of Maryland. I'm a developer, and I'm building{" "}
             <Link
               href="https://try-cobalt.com"
               target="_blank"
@@ -17,7 +17,7 @@ export default function Home() {
             </Link>{" "}
             to help you talk to your money. In my free time, I like to watch
             movies and play basketball. I'm working on becoming a better{" "}
-            <Link href="/blog" rel="noopener noreferrer" className="underline">
+            <Link href="/thoughts" rel="noopener noreferrer" className="underline">
               writer
             </Link>{" "}
             and a{" "}

@@ -9,8 +9,8 @@ export default async function Blog() {
       <div className="space-y-12">
         {posts.map((post) => (
           <article key={post.slug}>
-            <Link href={`/blog/${post.slug}`} className="group block">
-              <time className="mb-2 block text-sm text-muted-foreground">{post.date}</time>
+            <Link href={`/thoughts/${post.slug}`} className="group block">
+              <time className="mb-2 block text-md text-muted-foreground">{post.date}</time>
               <h2 className="mb-3 text-xl font-semibold text-foreground transition-colors ">
                 {post.title}
               </h2>
