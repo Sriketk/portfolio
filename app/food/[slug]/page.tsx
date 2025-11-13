@@ -24,13 +24,6 @@ export default async function FoodDetail({
 
   return (
     <>
-      <Link
-        href="/food"
-        className="mb-8 inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
-      >
-        ← Back to food
-      </Link>
-
       <article className="space-y-6">
         <div className="prose prose-lg max-w-none">
           <p className="text-lg leading-relaxed text-foreground">
