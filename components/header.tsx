@@ -14,6 +14,12 @@ export function Header() {
           >
             Blog
           </Link>
+          <Link
+            href="/food"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Food
+          </Link>
           {/* <Link
             href="/projects"
             className="text-muted-foreground transition-colors hover:text-foreground"

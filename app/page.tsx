@@ -17,20 +17,11 @@ export default function Home() {
             </Link>{" "}
             to help you talk to your money. In my free time, I like to watch
             movies and play basketball. I'm working on becoming a better{" "}
-            <Link
-              href="/blog"
-              rel="noopener noreferrer"
-              className="underline"
-            >
+            <Link href="/blog" rel="noopener noreferrer" className="underline">
               writer
             </Link>{" "}
             and a{" "}
-            <Link
-              href="https://www.instagram.com/sriket_cooks/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
+            <Link href="/food" rel="noopener noreferrer" className="underline">
               cook
             </Link>
             .
