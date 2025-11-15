@@ -11,7 +11,7 @@ const foodItems: FoodItem[] = [
     title: "Pasta",
     image: "/pasta.png",
     description:
-      "Spicy vodka pasta with sundried tomatoes and olive oil, topped with with parmesan reggianono need for a title anemd food for food route. just hte images themselves sholuld be good",
+      "Spicy vodka pasta with sundried tomatoes and olive oil, topped with with parmesan reggiano"
   },
   {
     slug: "taco",
