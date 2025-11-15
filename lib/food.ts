@@ -32,7 +32,7 @@ const foodItems: FoodItem[] = [
     title: "Sub",
     image: "/sub.png",
     description:
-      "Sweet and sour stripped tempeh with home made pickles, purple cabbage slaw, and pepperjack cheese topped with chipotle mayonnaise on garlic focaccia ",
+      "Sweet and sour chipotle tempeh strips with home made pickles, purple cabbage slaw, and pepperjack cheese topped with chipotle mayonnaise on garlic focaccia ",
   },
 ];
 
