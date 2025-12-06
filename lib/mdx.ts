@@ -10,6 +10,7 @@ export interface PostMetadata {
   slug: string
   description?: string
   year?: string
+  draft?: boolean
 }
 
 export async function getBlogPosts(): Promise<PostMetadata[]> {
@@ -33,8 +34,10 @@ export async function getBlogPosts(): Promise<PostMetadata[]> {
         title: data.title || '',
         date: data.date || '',
         description: data.description,
+        draft: data.draft || false,
       }
     })
+    .filter((post) => !post.draft) // Filter out draft posts
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   return posts
@@ -49,6 +52,11 @@ export async function getBlogPost(slug: string) {
 
   const fileContents = fs.readFileSync(filePath, 'utf8')
   const { data, content } = matter(fileContents)
+
+  // Return null if post is a draft
+  if (data.draft === true) {
+    return null
+  }
 
   return {
     metadata: {
