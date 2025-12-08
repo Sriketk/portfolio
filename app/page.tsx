@@ -5,8 +5,7 @@ export default function Home() {
       <section className="mb-12">
         <div className="space-y-6">
           <p className="text-lg leading-relaxed text-foreground">
-            Yo, I'm Sriket(Shree-keht). I'm 23 years old. I went to the University
-            of Maryland. I'm a developer, and I'm building{" "}
+            Yo, I'm Sriket(Shree-keht). I'm building{" "}
             <Link
               href="https://try-cobalt.com"
               target="_blank"
@@ -63,7 +62,7 @@ export default function Home() {
           </p>
 
           <p className="text-md leading-relaxed text-foreground">
-            Follow me on{" "}
+            {" "}
             <Link
               href="https://twitter.com/sriketk"
               target="_blank"
