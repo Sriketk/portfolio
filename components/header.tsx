@@ -20,6 +20,12 @@ export function Header() {
           >
             Food
           </Link>
+          <Link
+            href="/maxims"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Maxims
+          </Link>
           {/* <Link
             href="/projects"
             className="text-muted-foreground transition-colors hover:text-foreground"
