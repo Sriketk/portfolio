@@ -5,7 +5,7 @@ export default function Maxims() {
   const maxims = getMaxims();
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-6">
       {maxims.map((maxim, index) => (
         <div
           key={index}

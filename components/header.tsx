@@ -26,6 +26,12 @@ export function Header() {
           >
             Maxims
           </Link>
+          <Link
+            href="/recommendations"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Recommendations
+          </Link>
           {/* <Link
             href="/projects"
             className="text-muted-foreground transition-colors hover:text-foreground"
