@@ -18,8 +18,11 @@ const maxims: Maxim[] = [
   },
   {
     text: "I was the last hope. If not me then who?",
-    link: "https://www.youtube.com/shorts/SviwsbTVa4Q"
-  }
+    link: "https://www.youtube.com/shorts/SviwsbTVa4Q",
+  },
+  {
+    text: "The answer you are looking for lies in the work you are afraid to put in.",
+  },
 ];
 
 export function getMaxims(): Maxim[] {
