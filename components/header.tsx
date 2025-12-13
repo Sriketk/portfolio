@@ -3,11 +3,11 @@ import Link from "next/link";
 export function Header() {
   return (
     <header className="pt-16 pb-1">
-      <nav className="flex items-center justify-between">
+      <nav className="flex items-baseline justify-between">
         <Link href="/" className="text-4xl font-semibold text-foreground">
           Sriket Komali
         </Link>
-        <div className="flex gap-8 font-semibold text-md">
+        <div className="flex gap-8 font-semibold text-md items-baseline">
           <Link
             href="/thoughts"
             className="text-muted-foreground transition-colors hover:text-foreground"
