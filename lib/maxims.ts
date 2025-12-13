@@ -16,6 +16,10 @@ const maxims: Maxim[] = [
     text: "Quantity leds to quality",
     link: "https://x.com/spenserskates/status/1999541174999093329?s=20",
   },
+  {
+    text: "I was the last hope. If not me then who?",
+    link: "https://www.youtube.com/shorts/SviwsbTVa4Q"
+  }
 ];
 
 export function getMaxims(): Maxim[] {
