@@ -12,10 +12,12 @@ const maxims: Maxim[] = [
     text: "Look to your left and look to your right. The only people who will never tell you no are sitting with you right now.",
     link: "https://www.youtube.com/watch?v=x1RFAp0mLWM",
   },
- 
+  {
+    text: "Quantity leds to quality",
+    link: "https://x.com/spenserskates/status/1999541174999093329?s=20",
+  },
 ];
 
 export function getMaxims(): Maxim[] {
   return maxims;
 }
-
