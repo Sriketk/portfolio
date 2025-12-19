@@ -15,7 +15,12 @@ const recommendations: Recommendation[] = [
     title: "Steve Jobs Think Different speech",
     description: "Just saw this for the first time. elite.",
     link: "https://www.youtube.com/watch?v=keCwRdbwNQY",
-  }
+  },
+  {
+    title: "Acquired podcast business model",
+    description: "Super interesting breakdown of the business model of one of my favorite consumer brands.",
+    link: "https://www.youtube.com/watch?v=d6EMk6dyrOU",
+  },
   // Add more recommendations here
 ];
 

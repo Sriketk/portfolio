@@ -23,6 +23,10 @@ const maxims: Maxim[] = [
   {
     text: "The answer you are looking for lies in the work you are afraid to put in.",
   },
+  {
+    text: "Langauage is a lossy compression of thought.",
+    link: "https://www.youtube.com/watch?v=d6EMk6dyrOU",
+  }
 ];
 
 export function getMaxims(): Maxim[] {
