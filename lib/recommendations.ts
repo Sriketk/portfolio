@@ -5,6 +5,7 @@ export type Recommendation = {
 };
 
 const recommendations: Recommendation[] = [
+
   {
     title: "Apple Marketing tricks",
     description: "Really well made video. I love the Prestige parallel",
@@ -21,6 +22,11 @@ const recommendations: Recommendation[] = [
     description: "Super interesting breakdown of the business model of one of my favorite consumer brands.",
     link: "https://www.youtube.com/watch?v=d6EMk6dyrOU",
   },
+  {
+    title: "Chloe Zhao and Barry Jenkins DAG Hamnet Interview",
+    description: "You know what. We need to pause this conversation for second. You are Chloe mf Zhao. You got statues girl",
+    link: "https://youtu.be/JxK_BAOxCb0?t=1254",
+  }
   // Add more recommendations here
 ];
 
