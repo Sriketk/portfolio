@@ -26,7 +26,12 @@ const recommendations: Recommendation[] = [
     title: "Chloe Zhao and Barry Jenkins DAG Hamnet Interview",
     description: "You know what. We need to pause this conversation for second. You are Chloe mf Zhao. You got statues girl",
     link: "https://youtu.be/JxK_BAOxCb0?t=1254",
-  }
+  },
+  {
+    title: "Daniel Kwan reposted this article about authenicity, ugc, and the idea of being performative",
+    description: "Need to achieve gusto. authentic is doing things cause you want to do it.",
+    link: "https://apewoodx.substack.com/p/the-return-of-gusto?utm_campaign=post-expanded-share&utm_medium=post%20viewer&triedRedirect=true",
+  },
   // Add more recommendations here
 ];
 
