@@ -35,7 +35,7 @@ export default function Home() {
               className="underline"
             >
               Marty Supreme
-            </Link>{" "}s
+            </Link>{" "}
             and{" "}
             <Link
               href="https://letterboxd.com/film/avatar-fire-and-ash/"
