@@ -98,6 +98,33 @@ export default function Home() {
             >
               Letterboxd
             </Link>
+            ,{" "}
+            <Link
+              href="https://www.tiktok.com/@sriketk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              TikTok
+            </Link>
+            ,{" "}
+            <Link
+              href="https://www.instagram.com/sriket.finance/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              Instagram
+            </Link>
+            ,{" "}
+            <Link
+              href="https://www.youtube.com/@SriketFinance"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              YouTube
+            </Link>
           </p>
         </div>
       </section>
