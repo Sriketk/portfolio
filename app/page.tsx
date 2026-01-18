@@ -29,21 +29,12 @@ export default function Home() {
           <p className="text-lg leading-relaxed text-foreground">
             Do me a favor and support your local movie theater! This week I recommend{" "}
             <Link
-              href="https://letterboxd.com/film/marty-supreme/"
+              href="https://boxd.it/nKiA"
               target="_blank"
               rel="noopener noreferrer"
               className="underline"
             >
-              Marty Supreme
-            </Link>{" "}
-            and{" "}
-            <Link
-              href="https://letterboxd.com/film/avatar-fire-and-ash/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
-              Avatar
+              No Other Choice
             </Link>
             .
           </p>
