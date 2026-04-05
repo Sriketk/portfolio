@@ -27,14 +27,14 @@ export default function Home() {
           </p>
 
           <p className="text-lg leading-relaxed text-foreground">
-            Do me a favor and support your local movie theater! This week I recommend{" "}
+            Do me a favor and support your local movie theater! Check out{" "}
             <Link
-              href="https://boxd.it/nKiA"
+              href="https://letterboxd.com/film/the-drama/"
               target="_blank"
               rel="noopener noreferrer"
               className="underline"
             >
-              No Other Choice
+              The Drama
             </Link>
             .
           </p>
