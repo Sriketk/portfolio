@@ -31,6 +31,10 @@ const maxims: Maxim[] = [
     text: "The most personal is the most creative.",
     link: "https://www.youtube.com/watch?v=xOTD0r7wNIw",
   },
+  {
+    text: "I'm from the bottom, bikini bottom who knew Patrick would be a star",
+    link: "https://www.youtube.com/watch?v=eXMwRGlYDBU&list=RDIugK9UmuwJ0&index=27",
+  },
 ];
 
 export function getMaxims(): Maxim[] {
