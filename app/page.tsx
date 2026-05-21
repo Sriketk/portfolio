@@ -7,7 +7,7 @@ export default function Home() {
           <p className="text-lg leading-relaxed text-foreground">
             Yo, I'm Sriket(Shree-keht). I'm building{" "}
             <Link
-              href="https://try-cobalt.com"
+              href="https://cobaltpf.com"
               target="_blank"
               rel="noopener noreferrer"
               className="underline"
@@ -16,7 +16,11 @@ export default function Home() {
             </Link>{" "}
             to help you talk to your money. In my free time, I like to watch
             movies and play basketball. I'm working on becoming a better{" "}
-            <Link href="/thoughts" rel="noopener noreferrer" className="underline">
+            <Link
+              href="/thoughts"
+              rel="noopener noreferrer"
+              className="underline"
+            >
               writer
             </Link>{" "}
             and a{" "}
