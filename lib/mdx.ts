@@ -1,17 +1,12 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import type { PostMetadata } from './writing-categories'
+
+export type { PostMetadata, WritingCategory } from './writing-categories'
+export { WRITING_CATEGORIES } from './writing-categories'
 
 const contentDirectory = path.join(process.cwd(), 'content')
-
-export interface PostMetadata {
-  title: string
-  date: string
-  slug: string
-  description?: string
-  year?: string
-  draft?: boolean
-}
 
 export async function getBlogPosts(): Promise<PostMetadata[]> {
   const blogDirectory = path.join(contentDirectory, 'blog')
@@ -35,6 +30,7 @@ export async function getBlogPosts(): Promise<PostMetadata[]> {
         date: data.date || '',
         description: data.description,
         draft: data.draft || false,
+        category: data.category || 'Life',
       }
     })
     .filter((post) => !post.draft) // Filter out draft posts

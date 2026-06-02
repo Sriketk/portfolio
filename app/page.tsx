@@ -24,7 +24,7 @@ const components = {
 export default function Home() {
   const source = fs.readFileSync(
     path.join(process.cwd(), "content", "home.mdx"),
-    "utf8"
+    "utf8",
   );
 
   return (

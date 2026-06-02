@@ -36,7 +36,7 @@ export default async function BlogPost({
           <time className="mb-4 block text-md text-muted-foreground">
             {post.metadata.date}
           </time>
-          <h1 className="mb-4 font-serif text-4xl font-semibold leading-tight text-foreground md:text-5xl">
+          <h1 className="mb-4 text-4xl font-semibold leading-tight text-foreground md:text-5xl">
             {post.metadata.title}
           </h1>
         </header>

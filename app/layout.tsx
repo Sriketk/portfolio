@@ -1,12 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Nanum_Myeongjo } from "next/font/google"
+import { Quicksand, Nanum_Myeongjo } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Header } from "@/components/header"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
+const quicksand = Quicksand({ subsets: ["latin"], variable: "--font-sans" })
 const nanumMyeongjo = Nanum_Myeongjo({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -14,7 +14,7 @@ const nanumMyeongjo = Nanum_Myeongjo({
 })
 
 export const metadata: Metadata = {
-  title: "Your Name - Portfolio",
+  title: "Sriket Komali",
   description: "Personal portfolio and blog",
   generator: "v0.app",
 }
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${inter.variable} ${nanumMyeongjo.variable} font-serif antialiased`}>
+      <body className={`${quicksand.variable} ${nanumMyeongjo.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
