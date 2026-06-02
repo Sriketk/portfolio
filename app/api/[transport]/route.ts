@@ -2,7 +2,7 @@ import { createMcpHandler } from "mcp-handler";
 import path from "node:path";
 import { registerWikiTools } from "@/lib/mcp/server";
 
-const WIKI_ROOT = path.join(process.cwd(), "content");
+const WIKI_ROOT = path.join(process.cwd(), "wiki");
 
 const handler = createMcpHandler(
   (server) => {

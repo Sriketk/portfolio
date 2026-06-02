@@ -7,13 +7,13 @@ export function Header() {
         <Link href="/" className="text-4xl font-semibold text-foreground whitespace-nowrap">
           Sriket Komali
         </Link>
-        <div className="flex gap-8 font-semibold text-md items-baseline">
-          {/* <Link
-            href="/thoughts"
+        <div className="flex gap-8 font-bold text-lg items-baseline">
+          <Link
+            href="/writing"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            Thoughts
-          </Link> */}
+            Writing
+          </Link>
           <Link
             href="/food"
             className="text-muted-foreground transition-colors hover:text-foreground"
@@ -30,13 +30,19 @@ export function Header() {
             href="/recommendations"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            Recommendations
+            Recs
           </Link>
           <Link
             href="/guandan"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
             Guandan
+          </Link>
+          <Link
+            href="/mcp"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            MCP
           </Link>
           {/* <Link
             href="/projects"

@@ -1,0 +1,140 @@
+{
+  "ally-financial-era": [
+    "average-as-smart-as-peers",
+    "charlotte",
+    "charlotte-era",
+    "maryland-college",
+    "quit-ally",
+    "software-momentum-based",
+    "solo-builder-era",
+    "switch-to-cs"
+  ],
+  "average-as-smart-as-peers": [
+    "ally-financial-era",
+    "charlotte",
+    "charlotte-era",
+    "childhood-nomadic",
+    "look-death-in-eyes"
+  ],
+  "bootstrap-philosophy": [
+    "cobalt",
+    "great-things-not-done-alone",
+    "look-death-in-eyes",
+    "queens-era"
+  ],
+  "charlotte": [
+    "charlotte-era",
+    "fremont"
+  ],
+  "charlotte-era": [
+    "ally-financial-era",
+    "average-as-smart-as-peers",
+    "charlotte",
+    "childhood-nomadic",
+    "fremont",
+    "hyderabad",
+    "maryland-college",
+    "pursue-many-things-equally",
+    "switch-to-cs"
+  ],
+  "childhood-nomadic": [
+    "charlotte-era",
+    "fremont",
+    "honor-the-sacrifice",
+    "hyderabad",
+    "show-up-every-day"
+  ],
+  "cobalt": [
+    "bootstrap-philosophy",
+    "charlotte",
+    "design-cant-be-faked",
+    "great-things-not-done-alone",
+    "queens-era",
+    "solo-builder-era",
+    "switch-to-cs"
+  ],
+  "design-cant-be-faked": [
+    "cobalt",
+    "software-momentum-based",
+    "solo-builder-era"
+  ],
+  "fremont": [
+    "childhood-nomadic"
+  ],
+  "great-things-not-done-alone": [
+    "average-as-smart-as-peers",
+    "bootstrap-philosophy",
+    "cobalt",
+    "honor-the-sacrifice",
+    "move-to-nyc",
+    "queens-era",
+    "solo-builder-era"
+  ],
+  "honor-the-sacrifice": [
+    "childhood-nomadic",
+    "show-up-every-day"
+  ],
+  "hyderabad": [
+    "childhood-nomadic"
+  ],
+  "look-death-in-eyes": [
+    "honor-the-sacrifice",
+    "quit-ally"
+  ],
+  "maryland-college": [
+    "ally-financial-era",
+    "charlotte-era",
+    "pursue-many-things-equally",
+    "switch-to-cs"
+  ],
+  "move-to-nyc": [
+    "average-as-smart-as-peers",
+    "charlotte",
+    "queens-era",
+    "quit-ally",
+    "solo-builder-era"
+  ],
+  "pursue-many-things-equally": [
+    "great-things-not-done-alone"
+  ],
+  "queens-era": [
+    "bootstrap-philosophy",
+    "cobalt",
+    "great-things-not-done-alone",
+    "move-to-nyc",
+    "solo-builder-era"
+  ],
+  "quit-ally": [
+    "ally-financial-era",
+    "cobalt",
+    "honor-the-sacrifice",
+    "look-death-in-eyes",
+    "move-to-nyc",
+    "solo-builder-era"
+  ],
+  "show-up-every-day": [
+    "pursue-many-things-equally"
+  ],
+  "software-momentum-based": [
+    "ally-financial-era",
+    "design-cant-be-faked",
+    "quit-ally",
+    "show-up-every-day"
+  ],
+  "solo-builder-era": [
+    "ally-financial-era",
+    "bootstrap-philosophy",
+    "charlotte",
+    "charlotte-era",
+    "cobalt",
+    "design-cant-be-faked",
+    "great-things-not-done-alone",
+    "move-to-nyc",
+    "queens-era",
+    "quit-ally"
+  ],
+  "switch-to-cs": [
+    "charlotte-era",
+    "maryland-college"
+  ]
+}

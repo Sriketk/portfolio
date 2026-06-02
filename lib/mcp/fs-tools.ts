@@ -80,6 +80,28 @@ export class WikiFs {
     return { base64: buf.toString("base64"), mimeType };
   }
 
+  async getIndex(): Promise<string> {
+    return this.read("_index.md");
+  }
+
+  async getBacklinks(article?: string): Promise<unknown> {
+    const raw = await this.read("_backlinks.json");
+    const data = JSON.parse(raw) as Record<string, string[]>;
+    if (!article) return data;
+    return { article, backlinks: data[article] ?? [] };
+  }
+
+  async followWikilinks(rel: string): Promise<string[]> {
+    const text = await this.read(rel);
+    const links = new Set<string>();
+    const re = /\[\[([^\]]+)\]\]/g;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(text)) !== null) {
+      links.add(m[1].trim());
+    }
+    return [...links];
+  }
+
   async search(
     query: string,
     maxHits = 30,
