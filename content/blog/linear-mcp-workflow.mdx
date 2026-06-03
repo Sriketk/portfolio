@@ -1,9 +1,25 @@
 ---
-title: "Why Linear MCP completely changed my workflow"
+title: "How I use linear as a solo founder"
 date: "2026-06-02"
 description: "Setup for how I code."
 draft: false
 category: "Technology"
 ---
 
-TODO
+Agents accessing external systems is super powerful. This article is not about MCP over CLIs or any other data access protocol, but rather the specific tool that I use for Linear.
+
+When I first started building Cobalt, I thought I needed a project management tool. I set up a bunch of tickets, but I actually never really updated it. Since I was the only one building, I was always aware of what needed to get done. Adding a ticket and updating progress slowed me down, so I didn't really use it for the first few months.
+
+About a few months in, I started rewriting a lot of the systems that I had built to make them better. But stuff like this hinges on other moving parts of the codebase. So switching implementations often brought small bugs. With things changing ever so frequently, I would often forget why we changed something and the scope of that change. When did this change happen? What were the different options we considered? Initially we would document these decisions via comments in the codebase. The issue with this is that it created a bunch of comment bloat, and it would often delete the pre-existing comments. The only way to track the history was through git. And this was not guaranteed. If you changed stuff multiple times in one session without committing, you would run into issues. Also, commenting all of this stuff was very ugly. Having a bunch of markdown files in the codebase was yucky. There were probably different files that all mentioned the same thing. It was not very hygienic for me. I don't remember how I decided to use Linear for this. It must have been me trying something. But I started to track feature progress and link tickets and contingencies on Linear. But I was using the Linear MCP. So I would ask the agent to write the ticket itself, and the descriptions, and link any GitHub issues and stuff. This was very useful, especially for tracking decisions.
+
+This worked great for broken packages and stuff that we had to patch ourselves. We would document this with the reference of the actual GitHub link of the issue and source code.
+
+One example was when the team was choosing and deciding between the right agent architecture for sandboxes. We were looking between Vercel Sandbox, Daytona, and Cloudflare. We would consider each of these and even implement these solutions and track how we felt about each one and do comparison analysis for our use case. And if we ran into bugs, I would say something along the lines of "we had a Linear ticket about sandboxes. Can you look at the recent changes to the package and update if still relevant." This worked amazing. Something about having somewhat of a more distant proximity to the server forcing the LLM to query seems to work.
+
+I still review all the tickets. I don't close tickets and make them do tickets in the background or something. I still fire off tasks myself. But it is my favorite way to document progress and decisions. Having a state layer for your agents is super important. Almost every new coding thread begins with pulling the Linear ticket and explaining the scope of the feature. I even spec features out. I'll have dedicated threads and worktrees for the sole purpose of creating a Linear ticket. If I want to add a new feature, it will go and analyze tradeoffs and required changes and just hold the plan on the Linear ticket. Almost like storing agent "plans" for future use.
+
+This is essential to my workflow. With faster shipment cycles, I tend to forget exact reasons on everything.
+
+We also use it for package halts. If a package we use is not updated or there yet, we will set up jobs to poll and update the ticket if the package is ready to be used. And once it is, I'll auto-create PRs and stuff. This is about the most automated we get, and even this I find not that useful.
+
+We started to use git history a lot more now. Pulling up source code at different states and the actual technical details of implementations was also important. For example, if code was working good yesterday but I had a bug today and we changed implementations, I want to know why exactly this change caused a problem. So having the decision and source in different planes doesn't really cause an issue and doesn't detract from our workflow, but it would be interesting to see a combined version. As Linear is diving further into git features, I'm excited!

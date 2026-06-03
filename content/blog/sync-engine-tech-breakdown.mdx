@@ -1,0 +1,41 @@
+---
+title: "Breakdown of what goes on under the hood of sync engines"
+date: "2026-06-02"
+description: ""
+draft: false
+category: "Technology"
+---
+
+I got introduced to sync engines when I was using Next JS for [Cobalt](https://cobaltpf.com). I was frustrated with how long it took to navigate pages. Cobalt is a data heavy app. Each route contains atleast 5 api requests. And the responses contained huge objects and arrays. 
+
+The TLDR of traditional Next JS front ends is that it handles navigation/ routing on the server by default. They opt in to pattern of server side rendering. They also reccomend that you fetch data through react server components. The code for that might look something like this.
+
+Because Next Js is a server side rendered framework, the server not only handles the fetching of data, but it also handles the rendering of the page. This means that the server is responsible for fetching the data and returning the UI to the page(with data inside it). The technical term for this is "hydration". In contrast, Traditional Client Side Rendering frameworks like React SPA's leave the rendering of the UI to the client. 
+
+THe server is doing alot more work in Next JS than traditional client side rendering frameworks. 
+
+This means that you are adding latency to each navigation request. Next JS provides you 2 ways to deliver this user experience. 
+
+You can either show nothing on click. and once the server returns the hydrated page. Then the user gets navigated.
+
+Or Next js allows you the ability to define a loading state either through the "loading.js" file or either by wrapping your component in a React Suspense component. Its the same shit. Loading.js uses react suspense under the hood.
+
+So with this implemnttion, on navigation. Next js will render the loading state that the user defined and then render the entire page with the data once the server responds. 
+
+Next JS also allows you to stream the data in chunks. Lets say you have 2 UI components that call different API's. In the example that we talked about, the user has to wait for both api calls to finish and page rendering ebfore they acn display. With streaming, once the call is done, the server will render the UI of that component once it finishes. so one component does not block the rendering of the other.
+
+Next JS is great for delivering site that contains majority of static information, but bad for delivering sites that contain alot of dynamic content. Especialy sites where users do alot of work and edits. Think sites like Linear, notion, github.
+
+You can get around alot of these issues by prefetching routes. Next JS allows you to prefetch routes on the viewport. So this will load up hte route iwth the data before the user even clicks on it. This now will rack up costs on the server if hte user never decided to click on the route. 
+
+With a website where users might spend alot of time viewing thier finances, tagging transactions, and other edits, it was very important for our team to deliver the fastest experience to our users.
+
+The only real cost of switching your application from Next JS to a client side rendering framework is that you will lose SEO benefits, which you might not need for you application anyway. Maybe for your landing page, but not the actual app. 
+
+So the first optimization we did was to switch from next js to a client side rendering framework, We chose tanstack router. Tanstack router gives us alot of the same data fetching patterns as Next JS such as attaching functions to the route handler withouth the server side rendering. Tanstack does not use React Server Components out of the box. 
+
+This makes routing faster. so now we only have to wait for the server to return data, and the client will handle the rendering of the data. So with this you can no longer block navigation while the server is fetching data. You will get re routed and the client will show you the data as soon as it is available. you can either attach a loading state or you will see a blank screen. So this doenst resolve the loading state issue. tanstack router does have prefetching apis the same way Next JS does. 
+
+Another thing we want is realtime updates. like any producitivity software, if another users makes changes, we want to see thoe changes in realtime. This comes with alot of coding costs in traditional server frameowrks. cause u have to deal with caching and invalidations and all of that. 
+
+In our usecase, A bunch of couples will use Cobalt. Theyll sit down every sunday and go and tag through thier finances form thier own laptops. If a partern makes a change, the other paterner should see the changes automatically. So we needed some kind of sync from the server to the client withought worrying about complex state managemtn and cache invlaidaitons.
