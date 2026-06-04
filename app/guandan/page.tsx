@@ -74,7 +74,9 @@ const hands = [
     name: "Bomb",
     description: (
       <>
-        Four or <strong className="font-bold text-foreground">MORE</strong> cards of the same rank. Beats any non-bomb. Larger bombs beat smaller bombs.
+        Four or <strong className="font-bold text-foreground">MORE</strong>{" "}
+        cards of the same rank. Beats any non-bomb. Larger bombs beat smaller
+        bombs.
       </>
     ),
     example: [
@@ -117,8 +119,8 @@ export default function GuandanPage() {
           Guandan Hands
         </h1>
         <p className="text-lg leading-relaxed text-muted-foreground">
-          掼蛋 — a four-player Chinese trick-taking game. Reference for all
-          legal combinations, ordered from weakest to strongest.
+          Cant find a visual representation of guandan hands online. made for my
+          friends and I.
         </p>
       </div>
       <div className="grid auto-rows-fr grid-cols-2 justify-center gap-2 sm:relative sm:left-1/2 sm:right-1/2 sm:-ml-[50vw] sm:-mr-[50vw] sm:w-screen sm:grid-cols-[repeat(auto-fit,minmax(20rem,20rem))] sm:justify-start sm:gap-4 sm:px-12">

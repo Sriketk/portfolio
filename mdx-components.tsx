@@ -1,8 +1,16 @@
 import type { MDXComponents } from 'mdx/types'
 import Link from 'next/link'
+import { CodePlaceholder } from '@/components/code-placeholder'
+import { CodeRow } from '@/components/code-row'
+import { Caption, Video, YouTube } from '@/components/media'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    CodePlaceholder,
+    CodeRow,
+    Caption,
+    Video,
+    YouTube,
     h1: ({ children }) => (
       <h1 className="mb-8 text-4xl font-semibold leading-tight text-foreground md:text-5xl">
         {children}
@@ -19,7 +27,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </h3>
     ),
     p: ({ children }) => (
-      <p className="mb-6 text-lg font-extrabold leading-relaxed text-muted-foreground">
+      <p className="mb-6 text-lg font-semibold leading-relaxed text-muted-foreground">
         {children}
       </p>
     ),
@@ -51,20 +59,77 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </blockquote>
     ),
-    code: ({ children }) => (
-      <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">
-        {children}
-      </code>
-    ),
-    pre: ({ children }) => (
-      <pre className="mb-6 overflow-x-auto rounded-lg border border-border bg-muted p-4">
-        {children}
-      </pre>
-    ),
+    code: ({ children, className, ...props }) => {
+      const isBlock = "data-language" in props || (className ?? "").includes("language-");
+      return (
+        <code
+          className={
+            isBlock
+              ? `font-mono text-sm ${className ?? ""}`
+              : `rounded bg-muted px-1.5 py-0.5 font-mono text-sm ${className ?? ""}`
+          }
+          {...props}
+        >
+          {children}
+        </code>
+      );
+    },
+    figure: ({ children, ...props }: any) => {
+      const isCode = "data-rehype-pretty-code-figure" in props;
+      if (!isCode) return <figure {...props}>{children}</figure>;
+      return (
+        <figure
+          {...props}
+          className="mb-6 overflow-hidden rounded-xl border border-border bg-muted"
+        >
+          {children}
+        </figure>
+      );
+    },
+    figcaption: ({ children, ...props }: any) => {
+      const isTitle = "data-rehype-pretty-code-title" in props;
+      if (!isTitle) return <figcaption {...props}>{children}</figcaption>;
+      return (
+        <figcaption
+          {...props}
+          className="flex items-center gap-3 border-b border-border bg-black/30 px-3 py-2 font-mono text-xs text-muted-foreground"
+        >
+          <span className="flex gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
+          </span>
+          <span>{children}</span>
+        </figcaption>
+      );
+    },
+    pre: ({ children, className, ...props }: any) => {
+      const insideFigure = "data-language" in props;
+      return (
+        <pre
+          className={
+            insideFigure
+              ? `overflow-x-auto py-3 px-2 ${className ?? ""}`
+              : `mb-6 overflow-x-auto rounded-lg border border-border bg-muted py-3 px-2 ${className ?? ""}`
+          }
+          {...props}
+        >
+          {children}
+        </pre>
+      );
+    },
     strong: ({ children }) => (
       <strong className="font-semibold text-foreground">
         {children}
       </strong>
+    ),
+    img: ({ src, alt }: any) => (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={src}
+        alt={alt}
+        className="mb-6 w-full rounded-xl border border-border"
+      />
     ),
     hr: () => (
       <hr className="my-8 border-border" />

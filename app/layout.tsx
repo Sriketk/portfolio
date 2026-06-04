@@ -34,7 +34,7 @@ export default function RootLayout({
           forcedTheme="dark"
         >
           <div className="min-h-screen bg-background">
-            <div className="mx-auto max-w-3xl px-10 py-8 md:py-12">
+            <div className="mx-auto max-w-3xl px-4 py-8 md:px-6 md:py-12">
               <Header />
               <main className="mt-10">{children}</main>
             </div>

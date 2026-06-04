@@ -137,3 +137,20 @@
   --sidebar-border: oklch(0.25 0.08 140);
   --sidebar-ring: oklch(0.4 0.1 140);
 }
+
+code[data-line-numbers] {
+  counter-reset: line;
+}
+code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 0.75rem;
+  text-align: right;
+  color: var(--muted-foreground);
+  opacity: 0.6;
+}
+code[data-line-numbers-max-digits="2"] > [data-line]::before { width: 1.25rem; }
+code[data-line-numbers-max-digits="3"] > [data-line]::before { width: 1.75rem; }
+
