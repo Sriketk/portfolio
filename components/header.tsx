@@ -9,6 +9,12 @@ export function Header() {
         </Link>
         <div className="flex gap-8 font-bold text-lg items-baseline">
           <Link
+            href="/cv"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            CV
+          </Link>
+          <Link
             href="/writing"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >

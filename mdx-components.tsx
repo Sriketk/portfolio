@@ -32,7 +32,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </p>
     ),
     ul: ({ children }) => (
-      <ul className="mb-6 ml-6 list-disc space-y-2">
+      <ul className="mb-6 ml-6 list-disc space-y-2 [&_ul]:mb-0 [&_ul]:mt-2 [&_li>p]:mb-0">
         {children}
       </ul>
     ),
