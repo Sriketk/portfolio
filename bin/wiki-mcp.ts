@@ -12,12 +12,12 @@ async function main() {
   }
   const root = path.resolve(rootArg);
 
-  const server = new McpServer({ name: "sriekt-wiki", version: "0.1.0" });
+  const server = new McpServer({ name: "sriket-wiki", version: "0.1.0" });
   registerWikiTools(server, root);
 
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error(`sriekt-wiki MCP running on stdio (root: ${root})`);
+  console.error(`sriket-wiki MCP running on stdio (root: ${root})`);
 }
 
 main().catch((err) => {

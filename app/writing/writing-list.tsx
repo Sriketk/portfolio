@@ -30,7 +30,6 @@ export function WritingList({ posts }: { posts: PostMetadata[] }) {
         {filtered.map((post) => (
           <article key={post.slug}>
             <Link href={`/writing/${post.slug}`} className="group block">
-              <time className="mb-2 block text-md text-muted-foreground">{post.date}</time>
               <h2 className="mb-3 text-xl font-semibold text-foreground transition-colors ">
                 {post.title}
               </h2>

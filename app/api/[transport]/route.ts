@@ -9,7 +9,7 @@ const handler = createMcpHandler(
     registerWikiTools(server, WIKI_ROOT);
   },
   {
-    serverInfo: { name: "sriekt-wiki", version: "0.1.0" },
+    serverInfo: { name: "sriket-wiki", version: "0.1.0" },
   },
   {
     basePath: "/api",

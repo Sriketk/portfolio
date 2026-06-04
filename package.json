@@ -10,7 +10,7 @@
     "mcp:stdio": "tsx bin/wiki-mcp.ts"
   },
   "bin": {
-    "sriekt-wiki-mcp": "bin/wiki-mcp.ts"
+    "sriket-wiki-mcp": "bin/wiki-mcp.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
