@@ -4,10 +4,10 @@ export function Header() {
   return (
     <header className="pt-16 pb-1">
       <nav className="flex flex-col items-start gap-4">
-        <Link href="/" className="text-4xl font-semibold text-foreground whitespace-nowrap">
+        <Link href="/" className="text-2xl md:text-4xl font-semibold text-foreground whitespace-nowrap">
           Sriket Komali
         </Link>
-        <div className="flex gap-8 font-bold text-lg items-baseline">
+        <div className="flex gap-3 font-bold text-xs md:text-lg md:gap-8 items-baseline">
           <Link
             href="/cv"
             className="text-muted-foreground transition-colors hover:text-foreground"
