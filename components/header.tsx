@@ -15,6 +15,12 @@ export function Header() {
             Work
           </Link>
           <Link
+            href="/showcase"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Showcase
+          </Link>
+          <Link
             href="/writing"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >

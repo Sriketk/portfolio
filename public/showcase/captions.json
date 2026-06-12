@@ -1,0 +1,9 @@
+{
+  "desktop": {},
+  "mobile": {
+    "01-transactions": "Morphing date as you scroll through transactions. Inspired by Luma.",
+    "02-stocks": "Background of {ticker} uses the gradient of the ticker's color. Inspired by Apple Music and Spotify screens.\nMorphing instead of a loading state when switching graph time ranges. Inspired by Benji Taylor and Family.",
+    "03-adding-transaction": "Dynamic-sized dialogs for a form. Inspired by Family."
+  },
+  "raycast": {}
+}
