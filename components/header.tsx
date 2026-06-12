@@ -39,10 +39,10 @@ export function Header() {
             Recs
           </Link>
           <Link
-            href="/guandan"
+            href="/tools"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            Guandan
+            Tools
           </Link>
           <Link
             href="/mcp"
