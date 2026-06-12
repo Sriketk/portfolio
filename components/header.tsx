@@ -9,10 +9,10 @@ export function Header() {
         </Link>
         <div className="flex gap-3 font-bold text-xs md:text-lg md:gap-8 items-baseline">
           <Link
-            href="/cv"
+            href="/work"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            CV
+            Work
           </Link>
           <Link
             href="/writing"

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   CATEGORIES,
   CATEGORY_LABELS,
@@ -10,15 +10,16 @@ import {
   type Recommendation,
 } from "@/lib/recommendations";
 import images from "@/lib/recommendation-images.json";
+import audio from "@/lib/recommendation-audio.json";
 
 const IMAGE_MAP = images as Record<string, string>;
+const AUDIO_MAP = audio as Record<string, string>;
 
 const IMAGE_DIMS: Record<Category, { w: number; h: number }> = {
   movies: { w: 96, h: 144 },
   music: { w: 112, h: 112 },
   podcasts: { w: 112, h: 112 },
   youtube: { w: 160, h: 90 },
-  essays: { w: 0, h: 0 },
 };
 
 export function RecommendationsList({
@@ -27,8 +28,32 @@ export function RecommendationsList({
   recommendations: Recommendation[];
 }) {
   const [active, setActive] = useState<Category>(CATEGORIES[0]);
+  const [playingKey, setPlayingKey] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const filtered = recommendations.filter((r) => r.category === active);
+
+  useEffect(() => {
+    return () => {
+      audioRef.current?.pause();
+    };
+  }, []);
+
+  function toggleAudio(key: string) {
+    const src = AUDIO_MAP[key];
+    if (!src) return;
+    if (playingKey === key) {
+      audioRef.current?.pause();
+      setPlayingKey(null);
+      return;
+    }
+    audioRef.current?.pause();
+    const el = new Audio(src);
+    audioRef.current = el;
+    el.play().catch(() => {});
+    el.onended = () => setPlayingKey(null);
+    setPlayingKey(key);
+  }
 
   return (
     <>
@@ -47,7 +72,53 @@ export function RecommendationsList({
           </button>
         ))}
       </div>
-      {active === "movies" ? (
+      {active === "music" ? (
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          {filtered.map((item, index) => {
+            const key = item.artist
+              ? `${item.category}:${item.title}:${item.artist}`
+              : `${item.category}:${item.title}`;
+            const img = IMAGE_MAP[key];
+            const hasAudio = !!AUDIO_MAP[key];
+            const isPlaying = playingKey === key;
+            return (
+              <button
+                key={index}
+                onClick={() => toggleAudio(key)}
+                disabled={!hasAudio}
+                className="group block text-left"
+              >
+                <div className="relative aspect-square overflow-hidden rounded-md bg-muted">
+                  {img && (
+                    <Image
+                      src={img}
+                      alt={item.title}
+                      width={400}
+                      height={400}
+                      className="h-full w-full object-cover"
+                    />
+                  )}
+                  {hasAudio && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/30">
+                      <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-black opacity-0 transition-opacity group-hover:opacity-100">
+                        {isPlaying ? "Pause" : "Play"}
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <p className="mt-2 line-clamp-2 min-h-[2.5rem] text-sm font-medium leading-tight text-foreground">
+                  {item.title}
+                </p>
+                {item.artist && (
+                  <p className="line-clamp-1 text-xs text-muted-foreground">
+                    {item.artist}
+                  </p>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      ) : active === "movies" ? (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {filtered.map((item, index) => {
             const img = IMAGE_MAP[`${item.category}:${item.title}`];

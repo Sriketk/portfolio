@@ -1,4 +1,4 @@
-export const WRITING_CATEGORIES = ['All', 'Technology', 'Media', 'Sports', 'Life'] as const
+export const WRITING_CATEGORIES = ['All', 'Technology', 'Media', /* 'Sports', */ 'Life'] as const
 export type WritingCategory = (typeof WRITING_CATEGORIES)[number]
 
 export interface PostMetadata {
