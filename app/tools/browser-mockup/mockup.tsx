@@ -362,10 +362,14 @@ export function Mockup() {
     });
 
     const stream = canvas.captureStream(60);
+    // For transparent WebM prefer VP8 (MediaRecorder + VP9 strips alpha in
+    // Chrome). For solid, VP9 compresses better.
     const mimeCandidates =
       format === "mp4"
         ? ["video/mp4;codecs=avc1", "video/mp4"]
-        : ["video/webm;codecs=vp9", "video/webm;codecs=vp8", "video/webm"];
+        : useSolid
+          ? ["video/webm;codecs=vp9", "video/webm;codecs=vp8", "video/webm"]
+          : ["video/webm;codecs=vp8", "video/webm;codecs=vp9", "video/webm"];
     const mime = mimeCandidates.find((m) => MediaRecorder.isTypeSupported(m));
     if (!mime) {
       alert("Browser doesn't support this codec");

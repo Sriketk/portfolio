@@ -20,10 +20,8 @@ function listShots(
 ): ShowcaseData[Platform] {
   const dir = join(process.cwd(), "public", "showcase", platform);
   if (!existsSync(dir)) return [];
-  const files = readdirSync(dir).filter(
-    (f) =>
-      /\.(png|jpg|jpeg|webp|gif|mp4|webm)$/i.test(f) &&
-      !/\.poster\.(png|jpg|jpeg|webp)$/i.test(f),
+  const files = readdirSync(dir).filter((f) =>
+    /\.(png|jpg|jpeg|webp|gif|mp4|webm)$/i.test(f),
   );
   const groups = new Map<string, { dark?: string; light?: string }>();
   for (const f of files.sort()) {
