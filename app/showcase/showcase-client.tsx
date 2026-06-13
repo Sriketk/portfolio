@@ -71,10 +71,7 @@ export function ShowcaseClient({
 
   return (
     <main className="space-y-16 pb-24">
-      <div className="space-y-3">
-        <p className="text-center text-xl text-foreground">
-          Showcasing some of my favorite UI/UX features I built
-        </p>
+      <div>
         <div className="flex justify-center">
           <div className="inline-flex rounded-full border border-border p-1 text-sm">
             <button

@@ -2,7 +2,7 @@ import { readdirSync, existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ShowcaseClient, type ShowcaseData, type Platform } from "./showcase-client";
 
-const PLATFORMS: Platform[] = ["desktop", "mobile", "raycast"];
+const PLATFORMS: Platform[] = ["mobile", "desktop", "raycast"];
 
 function loadCaptions(): Record<Platform, Record<string, string>> {
   const path = join(process.cwd(), "public", "showcase", "captions.json");
