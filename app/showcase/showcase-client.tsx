@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 export type Platform = "desktop" | "mobile" | "raycast";
 
@@ -24,47 +24,6 @@ function isVideo(src: string): boolean {
   return /\.(mp4|webm)$/i.test(src);
 }
 
-function posterFor(src: string): string {
-  return src.replace(/\.(mp4|webm|mov)$/i, ".poster.jpg");
-}
-
-function LazyVideo({ src, className }: { src: string; className: string }) {
-  const ref = useRef<HTMLVideoElement>(null);
-  const [loaded, setLoaded] = useState(false);
-  const poster = posterFor(src);
-  useEffect(() => {
-    const v = ref.current;
-    if (!v) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          if (!loaded) {
-            v.src = src;
-            setLoaded(true);
-          }
-          v.play().catch(() => {});
-        } else {
-          v.pause();
-        }
-      },
-      { threshold: 0.15, rootMargin: "200px" },
-    );
-    io.observe(v);
-    return () => io.disconnect();
-  }, [src, loaded]);
-  return (
-    <video
-      ref={ref}
-      loop
-      muted
-      playsInline
-      preload="none"
-      poster={poster}
-      className={className}
-    />
-  );
-}
-
 function Media({
   src,
   aspect,
@@ -79,9 +38,13 @@ function Media({
       className={`relative ${aspect} mx-auto w-full ${maxWidth} overflow-hidden rounded-lg`}
     >
       {isVideo(src) ? (
-        <LazyVideo
+        <video
           key={src}
           src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
           className="h-full w-full object-cover"
         />
       ) : (
