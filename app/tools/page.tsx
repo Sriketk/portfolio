@@ -6,6 +6,7 @@ export const metadata = {
 
 const tools = [
   { href: "/tools/iphone-mockup", text: "iPhone mockup generator" },
+  { href: "/tools/browser-mockup", text: "Browser mockup generator" },
   { href: "/guandan", text: "Guandan" },
 ];
 
