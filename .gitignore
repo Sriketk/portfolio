@@ -28,3 +28,5 @@ next-env.d.ts
 
 # wiki raw dumps — never commit, source of truth is wiki/
 raw/
+public/showcase/_originals/
+.claude/
