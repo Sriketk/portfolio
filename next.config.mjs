@@ -9,6 +9,10 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  outputFileTracingExcludes: {
+    '/showcase': ['public/showcase/desktop/**', 'public/showcase/mobile/**'],
+    '*': ['public/showcase/desktop/**', 'public/showcase/mobile/**'],
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
