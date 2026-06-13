@@ -11,7 +11,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SHOWCASE="$ROOT/public/showcase"
 BACKUP="$SHOWCASE/_originals"
-CRF=23
+CRF=18
 PRESET=slow
 
 mkdir -p "$BACKUP"
@@ -23,7 +23,15 @@ for dir in "$SHOWCASE/desktop" "$SHOWCASE/mobile"; do
   rel="${dir#$SHOWCASE/}"
   mkdir -p "$BACKUP/$rel"
 
-  for f in "$dir"/*.mp4 "$dir"/*.webm "$dir"/*.mov; do
+  # Iterate sources from backup (canonical originals) when FORCE=1,
+  # else from dir (first-time compression).
+  if [[ "${FORCE:-0}" == "1" && -d "$BACKUP/$rel" ]]; then
+    src_dir="$BACKUP/$rel"
+  else
+    src_dir="$dir"
+  fi
+
+  for f in "$src_dir"/*.mp4 "$src_dir"/*.webm "$src_dir"/*.mov; do
     [[ -e "$f" ]] || continue
     base="$(basename "$f")"
     name="${base%.*}"
@@ -31,14 +39,14 @@ for dir in "$SHOWCASE/desktop" "$SHOWCASE/mobile"; do
     out_mp4="$dir/$name.mp4"
     poster="$dir/$name.poster.jpg"
 
-    # Skip if already compressed (backup exists)
-    if [[ -f "$backup_path" ]]; then
+    # Skip only when not forcing AND already backed up
+    if [[ "${FORCE:-0}" != "1" && -f "$backup_path" ]]; then
       echo "skip (already compressed): $rel/$base"
       continue
     fi
 
     echo "compressing: $rel/$base"
-    cp "$f" "$backup_path"
+    [[ -f "$backup_path" ]] || cp "$f" "$backup_path"
 
     tmp="$dir/.tmp.$name.mp4"
     ffmpeg -y -loglevel error -i "$backup_path" \
@@ -48,8 +56,11 @@ for dir in "$SHOWCASE/desktop" "$SHOWCASE/mobile"; do
       -an \
       "$tmp"
 
-    # Replace original (delete + rename in case extension changed)
-    rm -f "$f" "$out_mp4"
+    # Replace any prior output in dir, keep backup intact.
+    # Remove old encodings sharing the same name in $dir (any video ext).
+    for old in "$dir/$name."mp4 "$dir/$name."webm "$dir/$name."mov; do
+      [[ -e "$old" ]] && rm -f "$old"
+    done
     mv "$tmp" "$out_mp4"
 
     echo "  poster: $rel/$name.poster.jpg"
