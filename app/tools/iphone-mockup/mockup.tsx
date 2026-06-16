@@ -19,12 +19,16 @@ export function Mockup() {
   const [media, setMedia] = useState<Media | null>(null);
   const [padding, setPadding] = useState(11);
   const [frameColor, setFrameColor] = useState("#181818");
-  const [solidBg, setSolidBg] = useState(false);
+  const [bgMode, setBgMode] = useState<"none" | "color" | "image">("none");
+  const [bgColor, setBgColor] = useState("#0a0a0a");
+  const [bgImage, setBgImage] = useState<HTMLImageElement | null>(null);
   const solidOverrideRef = useRef<boolean | null>(null);
   const FALLBACK_BG = "lab(10.289 -17.2405 14.685)";
+  const bgFileInputRef = useRef<HTMLInputElement>(null);
   const [recording, setRecording] = useState(false);
   const [busy, setBusy] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+  const [bgDragOver, setBgDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const rafRef = useRef<number | null>(null);
 
@@ -43,11 +47,24 @@ export function Mockup() {
     const cw = BODY_W + padding * 2;
     const ch = BODY_H + padding * 2;
     ctx.clearRect(0, 0, cw, ch);
-    const useSolid = solidOverrideRef.current ?? solidBg;
-    if (useSolid) {
-      ctx.fillStyle = FALLBACK_BG;
-      ctx.fillRect(0, 0, cw, ch);
+    const override = solidOverrideRef.current;
+    if (override === true) {
+      // Recording solid pass — use current bg or fallback
+      if (bgMode === "image" && bgImage) {
+        drawBgImageCover(ctx, bgImage, cw, ch);
+      } else {
+        ctx.fillStyle = bgMode === "color" ? bgColor : FALLBACK_BG;
+        ctx.fillRect(0, 0, cw, ch);
+      }
+    } else if (override === null) {
+      if (bgMode === "color") {
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, cw, ch);
+      } else if (bgMode === "image" && bgImage) {
+        drawBgImageCover(ctx, bgImage, cw, ch);
+      }
     }
+    // override === false → transparent pass, draw nothing
 
     ctx.translate(padding, padding);
 
@@ -114,7 +131,7 @@ export function Mockup() {
     ctx.fillRect(BODY_W - 1, 220, 3, 90);
 
     ctx.restore();
-  }, [media, padding, frameColor, solidBg]);
+  }, [media, padding, frameColor, bgMode, bgColor, bgImage]);
 
   useEffect(() => {
     let stopped = false;
@@ -164,6 +181,13 @@ export function Mockup() {
         });
       };
     }
+  };
+
+  const onBgFile = (file: File) => {
+    if (!file.type.startsWith("image/")) return;
+    const img = new Image();
+    img.onload = () => setBgImage(img);
+    img.src = URL.createObjectURL(file);
   };
 
   const exportPNG = async () => {
@@ -377,14 +401,83 @@ export function Mockup() {
           />
         </label>
 
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={solidBg}
-            onChange={(e) => setSolidBg(e.target.checked)}
-          />
-          <span>Solid bg (fallback color)</span>
-        </label>
+        <div>
+          <span className="block mb-1 text-muted-foreground">Background</span>
+          <div className="grid grid-cols-3 gap-2 mb-2">
+            {(["none", "color", "image"] as const).map((m) => (
+              <button
+                key={m}
+                onClick={() => setBgMode(m)}
+                className={`rounded border py-2 text-xs capitalize ${
+                  bgMode === m
+                    ? "border-foreground ring-2 ring-foreground/40"
+                    : "border-border"
+                }`}
+              >
+                {m}
+              </button>
+            ))}
+          </div>
+          {bgMode === "color" && (
+            <label className="flex items-center gap-2 text-xs">
+              <span className="text-muted-foreground">Color</span>
+              <input
+                type="color"
+                value={bgColor}
+                onChange={(e) => setBgColor(e.target.value)}
+                className="flex-1 h-8 bg-transparent"
+              />
+            </label>
+          )}
+          {bgMode === "image" && (
+            <div className="space-y-2">
+              <div
+                onClick={() => bgFileInputRef.current?.click()}
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  setBgDragOver(true);
+                }}
+                onDragLeave={() => setBgDragOver(false)}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  setBgDragOver(false);
+                  const f = e.dataTransfer.files?.[0];
+                  if (f) onBgFile(f);
+                }}
+                className={`cursor-pointer rounded-lg border-2 border-dashed p-4 text-center transition ${
+                  bgDragOver
+                    ? "border-foreground bg-foreground/10"
+                    : "border-border hover:border-foreground/60 hover:bg-foreground/5"
+                }`}
+              >
+                <div className="text-sm font-medium mb-1">
+                  {bgImage ? "Replace bg image" : "Drop bg image"}
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  {bgImage ? "Click or drop new file" : "Click to browse · PNG/JPG"}
+                </div>
+              </div>
+              {bgImage && (
+                <button
+                  onClick={() => setBgImage(null)}
+                  className="w-full rounded border border-border py-1 text-xs text-muted-foreground hover:bg-foreground/5"
+                >
+                  Clear
+                </button>
+              )}
+              <input
+                ref={bgFileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const f = e.target.files?.[0];
+                  if (f) onBgFile(f);
+                }}
+                className="hidden"
+              />
+            </div>
+          )}
+        </div>
 
         <div>
           <span className="block mb-1 text-muted-foreground">Frame</span>
@@ -497,6 +590,23 @@ function shade(hex: string, amt: number) {
   g = Math.max(0, Math.min(255, g));
   b = Math.max(0, Math.min(255, b));
   return `rgb(${r},${g},${b})`;
+}
+
+function drawBgImageCover(
+  ctx: CanvasRenderingContext2D,
+  img: HTMLImageElement,
+  cw: number,
+  ch: number,
+) {
+  const iw = img.naturalWidth;
+  const ih = img.naturalHeight;
+  if (!iw || !ih) return;
+  const scale = Math.max(cw / iw, ch / ih);
+  const dw = iw * scale;
+  const dh = ih * scale;
+  const dx = (cw - dw) / 2;
+  const dy = (ch - dh) / 2;
+  ctx.drawImage(img, dx, dy, dw, dh);
 }
 
 function downloadBlob(blob: Blob, name: string) {
